@@ -5,11 +5,6 @@ _G.SetWalkSpeed = 16
 _G.Select_Place1 = ""
 
 
-local Beams = {}
-for i,v in pairs(game:GetService("Workspace")["Beams"]:GetChildren()) do
-		table.insert(Beams,v.Name)
-end
-
 
 local DiscordLib =
     loadstring(game:HttpGet "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/discord")()
@@ -59,15 +54,6 @@ function DestroyDoor()
 end
 
 
-
-function TeleporttoBeams()
-    for i,v in pairs(game:GetService("Workspace")["Beams"]:GetChildren()) do
-        if v.Name == _G.Select_Place1 then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-        end
-    end
-end
-
 btns:Button(
     "Collect Cash",
     function()
@@ -75,6 +61,21 @@ btns:Button(
         wait(0.5)
         CollectCash()
 end)
+
+
+
+btns:Button(
+    "Teleport to 2nd Floor",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons.Bravo.PurchasedObjects["Lower Walls 2nd Floor"]["Lower Walls"].CFrame
+end)
+
+btns:Button(
+    "Teleport to 3rd Floor",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons.Bravo.PurchasedObjects["Lower Walls 3rd Floor"]["Lower Walls"].CFrame
+end)
+
 btns:Seperator()
 
 local drop =
@@ -126,29 +127,50 @@ btns:Button(
         DestroyDoor()
 end)
 
-
-local drop =
-    btns:Dropdown(
-    "Select Place",
-    Beams,
-    function(Select1)
-        _G.Select_Place1 = Select1
-    end
-)
-
-btns:Button("Refresh Place",function()
-    btns:Clear()
-    for i,v in pairs(game:GetService("Workspace")["Beams"]:GetChildren()) do
-            table.insert(Beams,v.Name)
-    end
-    for i,v in pairs(game:GetService("Workspace")["Beams"]:GetChildren()) do
-            table.insert(Beams,v.Name)
-    end
+btns:Button(
+    "Teleport to Capture Point 1",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Beams.CapturePoint1.CFrame
 end)
 
-btns:Button("Teleport to Place",function()
-    TeleporttoBeams()
+btns:Button(
+    "Teleport to Airdrop",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Beams["Airdrop_1712895130"].CFrame
 end)
+
+
+btns:Button(
+    "Teleport Warehouse 1",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Beams.Warehouse1.CFrame
+end)
+
+btns:Button(
+    "Teleport Warehouse 2",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Beams.Warehouse2.CFrame
+end)
+
+
+
+btns:Button(
+    "Teleport Oil Rig1",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Beams["Oil Rig1"].CFrame
+end)
+
+
+btns:Button(
+    "Teleport Oil Rig2",
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Beams["Oil Rig2"].CFrame
+end)
+
+
+
+
+
 
 local btns2 = serv:Channel("Player")
 
